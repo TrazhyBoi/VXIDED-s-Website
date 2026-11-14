@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Want to get your music listened to by everyone? Submit your music to VXIDED's playlist and get your music out there!"
+    />
+    <title>VXIDED | Playlist</title>
+    <link rel="icon" href="assets/vxided-logo.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+<body>
+    <header class="site-header">
+      <a class="brand" href="home.html" aria-label="VXIDED home">
+        <img src="assets/vxided-logo.jpg" alt="" />
+        <span>VXIDED</span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-navigation"
+        aria-label="Open navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-navigation" id="site-navigation" aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="socials.html">Socials</a>
+        <a class="current" href="playlist.html" aria-current="page">Playlist</a>
+        <label class="theme-option">
+          <span>Dark mode</span>
+          <input class="theme-toggle" type="checkbox" role="switch" aria-label="Dark mode" />
+          <span class="theme-switch" aria-hidden="true"></span>
+        </label>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="visually-hidden">Playlist</h1>
+
+      <section class="releases content-section" id="releases" aria-labelledby="releases-title">
+        <div class="section-intro playlist-intro">
+          <h2 id="releases-title">The Underground Playlist</h2>
+          <p class="playlist-schedule">The Spotify playlist updates every Sunday, and SoundCloud every Saturday.</p>
+          <p class="playlist-link-note">Spotify and SoundCloud song links only. Audio file uploads are not accepted.</p>
+        </div>
+
+        <section class="submission-panel" aria-labelledby="submission-title">
+          <h3 id="submission-title">Submit your music</h3>
+          <p class="submission-intro">Share your song for consideration in The Underground Playlist.</p>
+          <form id="music-submission-form" class="submission-form">
+            <label class="submission-field" for="stage-name">
+              What's your stage name?
+              <input id="stage-name" name="stageName" type="text" maxlength="60" autocomplete="nickname" required />
+            </label>
+
+            <label class="submission-field" for="song-link">
+              Link to song
+              <input
+                id="song-link"
+                name="songLink"
+                type="url"
+                inputmode="url"
+                placeholder="https://open.spotify.com/track/..."
+                aria-describedby="song-link-help"
+                required
+              />
+              <span class="submission-help" id="song-link-help">Use a Spotify or SoundCloud song link. No uploads or other link types.</span>
+            </label>
+
+            <label class="submission-field" for="submission-reason">
+              Reason why you want to be added
+              <textarea id="submission-reason" name="reason" rows="4" maxlength="500" required></textarea>
+            </label>
+
+            <button class="button-link" type="submit">Submit song</button>
+          </form>
+          <p class="submission-status" id="submission-status" role="status" aria-live="polite">Your submission will be sent to the playlist review channel.</p>
+        </section>
+
+      </section>
+
+      <section class="contact-section" aria-labelledby="contact-title">
+        <h2 id="contact-title">Wanna Get A Better Placement?</h2>
+        <p>Join the Discord and become a Server Booster or earn the Major Supporter role for a better placement.</p>
+        <a
+          class="button-link"
+          href="https://discord.gg/kBtzg4xAmQ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Go To Discord! <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Need to get in more contact? Here's my email:</p>
+      <a href="mailto:pbalmsmgmt@gmail.com">pbalmsmgmt@gmail.com</a>
+      <small>© <span data-current-year></span> VXIDED</small>
+    </footer>
+</body>
+
+
+</html>
