@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Official website for VXIDED. Listen to the latest releases and find official social pages."
+      content="Official website for artist VXIDED."
     />
     <title>VXIDED | Official Website</title>
     <link rel="icon" href="assets/vxided-logo.jpg" />
@@ -44,6 +44,48 @@
 
     <main>
       <h1 class="visually-hidden">VXIDED</h1>
+
+      <section
+        class="latest-drop-section content-section"
+        data-latest-drop
+        aria-labelledby="latest-drop-heading"
+        aria-busy="true"
+      >
+        <article class="latest-drop-card">
+          <div class="latest-drop-artwork">
+            <img data-latest-artwork src="assets/vxided-logo.jpg" alt="VXIDED artwork" />
+          </div>
+          <div class="latest-drop-copy">
+            <h2 class="latest-drop-label" id="latest-drop-heading">🚨 LATEST DROP 🚨</h2>
+            <h3 data-latest-title>Checking for the latest release...</h3>
+            <time class="latest-drop-date" data-latest-date hidden></time>
+            <p class="latest-drop-description" data-latest-description>
+              "demo4" is the latest release from VXIDED, a collaboration with thelilbird. This track is part of a series of creative works that showcase the unique sound and style of both artists."
+            </p>
+            <button class="latest-drop-button" type="button" data-open-platforms disabled>
+              Choose your streaming platform
+            </button>
+            <p class="latest-drop-status" data-latest-status role="status" aria-live="polite">
+              Checking Spotify and Apple Music...
+            </p>
+          </div>
+        </article>
+
+        <dialog
+          class="streaming-platform-dialog"
+          data-platform-dialog
+          aria-labelledby="streaming-platform-heading"
+        >
+          <form method="dialog">
+            <button class="platform-dialog-close" type="submit" aria-label="Close">Close</button>
+          </form>
+          <h2 id="streaming-platform-heading">Where do you listen most?</h2>
+          <div class="streaming-platform-options">
+            <a class="streaming-platform-link" data-spotify-link hidden>Spotify</a>
+            <a class="streaming-platform-link" data-apple-link hidden>Apple Music</a>
+          </div>
+        </dialog>
+      </section>
 
       <section class="releases content-section" id="releases" aria-labelledby="releases-title">
         <div class="section-intro">
