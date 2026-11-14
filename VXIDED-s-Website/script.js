@@ -53,6 +53,46 @@ if (themeToggle) {
   });
 }
 
+const studioCarousel = document.querySelector("[data-studio-carousel]");
+
+if (studioCarousel) {
+  const track = studioCarousel.querySelector("[data-carousel-track]");
+  const previousButton = studioCarousel.querySelector("[data-carousel-prev]");
+  const nextButton = studioCarousel.querySelector("[data-carousel-next]");
+
+  if (track && previousButton && nextButton) {
+    const updateCarouselButtons = () => {
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      previousButton.disabled = track.scrollLeft <= 4;
+      nextButton.disabled = track.scrollLeft >= maxScroll - 4;
+    };
+
+    const scrollByCard = (direction) => {
+      const firstCard = track.querySelector(".studio-note");
+
+      if (!firstCard) {
+        return;
+      }
+
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth";
+
+      track.scrollBy({
+        left: direction * (firstCard.getBoundingClientRect().width + gap),
+        behavior,
+      });
+    };
+
+    previousButton.addEventListener("click", () => scrollByCard(-1));
+    nextButton.addEventListener("click", () => scrollByCard(1));
+    track.addEventListener("scroll", updateCarouselButtons, { passive: true });
+    window.addEventListener("resize", updateCarouselButtons);
+    updateCarouselButtons();
+  }
+}
+
 const musicSubmissionForm = document.querySelector("#music-submission-form");
 const songLinkInput = document.querySelector("#song-link");
 const stageNameInput = document.querySelector("#stage-name");
