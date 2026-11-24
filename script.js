@@ -1,6 +1,46 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#site-navigation");
 
+document.querySelectorAll(".presave-banner").forEach((banner) => {
+  const track = banner.querySelector(".presave-banner-track");
+
+  if (!(banner instanceof HTMLAnchorElement) || !(track instanceof HTMLElement)) {
+    return;
+  }
+
+  const groups = Array.from(track.querySelectorAll(".presave-banner-group"));
+  const firstGroup = groups[0];
+  const sourceCopy = firstGroup && firstGroup.querySelector(".presave-banner-copy");
+
+  if (groups.length < 2 || !(sourceCopy instanceof HTMLElement)) {
+    return;
+  }
+
+  const fillBanner = () => {
+    const sampleCopy = groups[0].querySelector(".presave-banner-copy");
+    const copyWidth = sampleCopy instanceof HTMLElement
+      ? sampleCopy.getBoundingClientRect().width
+      : 0;
+    const bannerWidth = banner.clientWidth;
+
+    if (copyWidth === 0 || bannerWidth === 0) {
+      return;
+    }
+
+    const copyCount = Math.max(1, Math.ceil(bannerWidth / copyWidth));
+
+    groups.forEach((group) => {
+      group.replaceChildren(...Array.from({ length: copyCount }, () => sourceCopy.cloneNode(true)));
+    });
+
+    const groupWidth = groups[0].getBoundingClientRect().width;
+    track.style.setProperty("--presave-duration", `${Math.max(20, groupWidth / 30)}s`);
+  };
+
+  fillBanner();
+  window.addEventListener("resize", fillBanner);
+});
+
 if (menuToggle && navigation) {
   const setNavigationOpen = (isOpen) => {
     menuToggle.setAttribute("aria-expanded", String(isOpen));
