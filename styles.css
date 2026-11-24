@@ -48,12 +48,13 @@ a {
   top: 0;
   left: 0;
   isolation: isolate;
-  display: flex;
+  display: grid;
   width: 100%;
   min-height: 72px;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px max(28px, calc((100% - 1280px) / 2));
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(12px, 3vw, 40px);
+  padding: 8px 24px;
   background:
     linear-gradient(135deg, rgba(85, 38, 60, 0.96), rgba(63, 30, 53, 0.96) 60%, rgba(89, 40, 60, 0.96)),
     url("assets/vxided-pattern.svg") center / auto 82px repeat,
@@ -76,6 +77,41 @@ a {
   height: 48px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   object-fit: cover;
+}
+
+.presave-banner {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.presave-banner:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.presave-banner-track {
+  display: flex;
+  width: max-content;
+  animation: presave-marquee 20s linear infinite;
+}
+
+.presave-banner-copy {
+  flex: 0 0 auto;
+  padding-right: 2rem;
+}
+
+@keyframes presave-marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .site-navigation {
@@ -1021,10 +1057,12 @@ body.navigation-open {
   .site-header {
     min-height: 64px;
     padding: 8px 16px;
+    gap: 12px;
   }
 
   .brand {
     font-size: 1.2rem;
+    gap: 8px;
   }
 
   .brand img {
@@ -1034,6 +1072,15 @@ body.navigation-open {
 
   .menu-toggle {
     display: block;
+  }
+
+  .presave-banner {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+
+  .presave-banner-copy {
+    padding-right: 1.25rem;
   }
 
   .hero,
@@ -1173,6 +1220,22 @@ body.navigation-open {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .presave-banner-track {
+    width: 100%;
+    animation: none;
+  }
+
+  .presave-banner-copy {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+  }
+
+  .presave-banner-copy + .presave-banner-copy {
+    display: none;
   }
 
   *,
