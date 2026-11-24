@@ -100,7 +100,12 @@ a {
 .presave-banner-track {
   display: flex;
   width: max-content;
-  animation: presave-marquee 20s linear infinite;
+  animation: presave-marquee var(--presave-duration, 20s) linear infinite;
+}
+
+.presave-banner-group {
+  display: flex;
+  flex: 0 0 auto;
 }
 
 .presave-banner-copy {
@@ -1234,6 +1239,11 @@ body.navigation-open {
     text-overflow: ellipsis;
   }
 
+  .presave-banner-group {
+    width: 100%;
+  }
+
+  .presave-banner-group:not(:first-child),
   .presave-banner-copy + .presave-banner-copy {
     display: none;
   }
